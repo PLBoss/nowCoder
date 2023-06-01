@@ -6,7 +6,7 @@ public class LoginTicket {
 
     int id;
 
-    int userId;
+    Integer userId;
 
     String ticket;
 
@@ -23,13 +23,15 @@ public class LoginTicket {
         this.id = id;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
+
 
     public String getTicket() {
         return ticket;

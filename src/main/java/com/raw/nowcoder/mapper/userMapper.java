@@ -16,4 +16,16 @@ public interface userMapper {
     User selectByName(String username);
 
     void saveTickt(@Param("loginTicket") LoginTicket loginTicket);
+
+    User selectById(String userId);
+
+    LoginTicket selectTicket(String ticket);
+
+    int  inserUser(User user);
+
+    User selectByEmail(String email);
+
+    int updateStatus(String id);
+
+    int updateHeadUrl(int id, String headUrl);
 }

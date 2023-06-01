@@ -10,16 +10,39 @@
         <result property="createTime" column="create_time"></result>
 
     </resultMap>
+
     <insert id="saveTickt">
         INSERT into login_ticket VALUES(NULL,#{loginTicket.userId},#{loginTicket.ticket},#{loginTicket.status},#{loginTicket.expired})
     </insert>
+    <insert id="inserUser" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO user(username,password,salt,email,type,status,activation_code,header_url,create_time)
+        VALUES (#{username},#{password},#{salt},#{email},#{type},#{status},#{activationCode},#{headerUrl},#{createTime})
+    </insert>
+    <update id="updateStatus">
+        UPDATE user set status=1 where id=#{id};
+
+    </update>
+    <update id="updateHeadUrl">
+
+        UPDATE user set header_url=#{headUrl} where id=#{id}
+    </update>
 
 
     <select id="selectAll" resultType="com.raw.nowcoder.entity.User" resultMap="userResultMap">
         SELECT * from user;
     </select>
     <select id="selectByName" resultType="com.raw.nowcoder.entity.User" resultMap="userResultMap">
-        SELECT * from user WHERE  username=#{username};
+        SELECT * from user WHERE  username=#{username} and status=1;
+    </select>
+
+    <select id="selectById" resultType="com.raw.nowcoder.entity.User">
+        SELECT * from user WHERE  id=#{userId};
+    </select>
+    <select id="selectTicket" resultType="com.raw.nowcoder.entity.LoginTicket">
+        SELECT * from login_ticket where ticket=#{ticket} and status=0;
+    </select>
+    <select id="selectByEmail" resultType="com.raw.nowcoder.entity.User">
+        SELECT * from user WHERE email=#{email}
     </select>
 
 

@@ -18,6 +18,27 @@ public class DiscussPost {
 
     private int status;
 
+    @Override
+    public String toString() {
+        return "DiscussPost{" +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", type=" + type +
+                ", status=" + status +
+                ", createTime=" + createTime +
+                ", commentCount=" + commentCount +
+                ", score=" + score +
+                '}';
+    }
+
+    private Date createTime;
+
+    private int commentCount;
+
+    private double score;
+
     public int getId() {
         return id;
     }
@@ -90,11 +111,6 @@ public class DiscussPost {
         this.score = score;
     }
 
-    private Date createTime;
-
-    private int commentCount;
-
-    private double score;
 
 
 }
